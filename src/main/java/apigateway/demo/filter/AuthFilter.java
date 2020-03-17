@@ -25,6 +25,8 @@ import static org.springframework.cloud.netflix.zuul.filters.support.FilterConst
 public class AuthFilter extends ZuulFilter{
     RequestContext requestContext = RequestContext.getCurrentContext();
     HttpServletRequest request = requestContext.getRequest();
+    //private RedisTemplate redisTemplate;
+
     @Override
     public String filterType() {
         return PRE_TYPE;
@@ -54,10 +56,10 @@ public class AuthFilter extends ZuulFilter{
                 requestContext.setResponseStatusCode(HttpStatus.SC_UNAUTHORIZED);
             }
         }
-        if("/order/finish".equals(request.getRequestURI())){
+        if("/order/order/finish".equals(request.getRequestURI())){
             Cookie cookie = CookieUtil.get(request,"token");
             if(cookie == null || StringUtils.isEmpty(cookie.getValue())
-            /*|| StringUtils.isEmpty(redisTemplate.opsForValue().get(String.format(RedisConstant.TOKEN_TEMPLATE,cookie.getValue())))*/){
+            || StringUtils.isEmpty(redisTemplate.opsForValue().get(String.format(RedisConstant.TOKEN_TEMPLATE,cookie.getValue())))){
                 requestContext.setSendZuulResponse(false);
                 requestContext.setResponseStatusCode(HttpStatus.SC_UNAUTHORIZED);
             }

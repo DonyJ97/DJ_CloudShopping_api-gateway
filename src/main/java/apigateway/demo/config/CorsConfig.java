@@ -12,7 +12,7 @@ import java.util.Arrays;
 /**
  * @ Author     ：djq.
  * @ Date       ：Created in 14:55 2020/3/7
- * @ Description：
+ * @ Description：跨域相关
  * @ Modified By：
  * @Version: $
  */
@@ -25,7 +25,7 @@ public class CorsConfig {
         final CorsConfiguration config = new CorsConfiguration();
 
         config.setAllowCredentials(true);
-        config.setAllowedOrigins(Arrays.asList("*")); //http:www.a.com
+        config.setAllowedOrigins(Arrays.asList("*"));
         config.setAllowedHeaders(Arrays.asList("*"));
         config.setAllowedMethods(Arrays.asList("*"));
         config.setMaxAge(300l);

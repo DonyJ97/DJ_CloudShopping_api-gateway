@@ -1,7 +1,7 @@
 package apigateway.demo.constant;
 
 /**
- * Created by 廖师兄
+ * Created by djq
  * 2018-03-04 23:37
  */
 public interface RedisConstant {
